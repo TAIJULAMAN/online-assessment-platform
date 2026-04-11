@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6366f1;
+  --color-primary-foreground: #ffffff;
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
+  
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles for the platform */
+.custom-shadow {
+  box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.1);
+}
+
+.editor-toolbar-separator {
+  @apply h-4 border-l border-gray-200 mx-1;
+}
