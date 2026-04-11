@@ -54,9 +54,22 @@ const mockTests = [
 export default function EmployerDashboardPage() {
   const router = useRouter();
   const { user } = useAppSelector((state) => state.auth);
+  const { tests: reduxTests } = useAppSelector((state) => state.tests);
   const [searchQuery, setSearchQuery] = useState("");
   const [pageSize, setPageSize] = useState("8");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const displayTests = [...reduxTests.map(t => ({
+    id: t.id,
+    title: t.title,
+    totalCandidates: t.totalCandidates.toLocaleString(),
+    questionSets: t.questionSets.toString(),
+    totalSlots: t.totalSlots.toString()
+  })), ...mockTests];
+
+  const filteredTests = displayTests.filter(test => 
+    test.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handlePageSizeChange = (size: string) => {
     setPageSize(size);
@@ -105,7 +118,7 @@ export default function EmployerDashboardPage() {
 
           {/* Test Cards Grid */}
           <div className="grid gap-8 md:grid-cols-2">
-            {mockTests.map((test, i) => (
+            {filteredTests.map((test, i) => (
               <Card key={i} className="border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-white rounded-[1.5rem] p-8 hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group">
                 <CardContent className="p-0 space-y-8">
                   <h3 className="text-xl font-bold text-[#1e1b4b] leading-tight group-hover:text-primary transition-colors pr-4">
@@ -131,6 +144,7 @@ export default function EmployerDashboardPage() {
                     <Button 
                       variant="outline"
                       className="h-11 px-6 border-2 border-primary text-primary font-bold rounded-xl transition-all active:scale-95 shadow-sm"
+                      onClick={() => router.push(`/employer/candidates/${test.id}`)}
                     >
                       View Candidates
                     </Button>

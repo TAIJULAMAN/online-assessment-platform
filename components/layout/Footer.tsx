@@ -5,36 +5,36 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="bg-[#0f172a] text-white py-10 px-6 sm:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
-      <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+    <footer className="bg-[#050b1a] text-white py-8 px-6 sm:px-12 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-gray-800">
+      <div className="flex items-center gap-3">
         <p className="text-sm font-medium text-gray-400">Powered by</p>
         <Image
           src="/Logo.svg"
           alt="AKIJ RESOURCE"
-          width={150}
-          height={40}
-          className="h-9 w-auto brightness-0 invert"
+          width={130}
+          height={32}
+          className="h-8 w-auto brightness-0 invert"
         />
       </div>
 
-      <div className="flex flex-col md:flex-row items-start md:items-center gap-5 md:gap-10">
-        <span className="text-sm font-bold tracking-widest text-gray-400 uppercase">
+      <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+        <span className="text-sm font-bold tracking-wider text-gray-500 uppercase">
           Helpline
         </span>
-        <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 text-sm">
-          <div className="flex items-center gap-3 hover:text-primary transition-colors cursor-pointer group">
+        <div className="flex flex-col sm:flex-row items-center gap-6 text-sm">
+          <div className="flex items-center gap-2 hover:text-indigo-400 transition-colors cursor-pointer group">
             <Phone
-              size={20}
-              className="text-gray-400 group-hover:text-primary transition-colors"
+              size={18}
+              className="text-gray-500 group-hover:text-indigo-400 transition-colors"
             />
-            <span className="font-semibold">+88 011020202505</span>
+            <span className="font-semibold text-gray-300 tracking-tight">+88 011020202505</span>
           </div>
-          <div className="flex items-center gap-3 hover:text-primary transition-colors cursor-pointer group">
+          <div className="flex items-center gap-2 hover:text-indigo-400 transition-colors cursor-pointer group">
             <Mail
-              size={20}
-              className="text-gray-400 group-hover:text-primary transition-colors"
+              size={18}
+              className="text-gray-500 group-hover:text-indigo-400 transition-colors"
             />
-            <span className="font-semibold">support@akij.work</span>
+            <span className="font-semibold text-gray-300 tracking-tight">support@akij.work</span>
           </div>
         </div>
       </div>

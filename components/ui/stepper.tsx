@@ -15,26 +15,24 @@ interface StepperProps {
 
 export function Stepper({ steps, currentStep }: StepperProps) {
   return (
-    <div className="flex items-center justify-start py-6 overflow-x-auto no-scrollbar">
+    <div className="flex items-center justify-start py-4 overflow-x-auto no-scrollbar">
       {steps.map((step, index) => (
         <div key={step.id} className="flex items-center">
           <div className="flex items-center gap-3">
             <div
               className={cn(
-                "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold transition-all duration-300",
-                currentStep > step.id
-                  ? "border-primary bg-primary text-white"
-                  : currentStep === step.id
-                    ? "border-primary bg-primary/10 text-primary"
-                    : "border-gray-200 bg-gray-50 text-gray-400",
+                "flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-all duration-300",
+                currentStep >= step.id
+                  ? "bg-[#6366f1] text-white"
+                  : "bg-gray-200 text-gray-500",
               )}
             >
-              {currentStep > step.id ? <Check size={20} strokeWidth={3} /> : step.id}
+              {currentStep >= step.id ? <Check className="h-5 w-5" strokeWidth={3} /> : step.id}
             </div>
             <span
               className={cn(
-                "text-sm font-bold whitespace-nowrap",
-                currentStep >= step.id ? "text-[#1e1b4b]" : "text-gray-400",
+                "text-sm font-semibold whitespace-nowrap",
+                currentStep >= step.id ? "text-gray-700" : "text-gray-400",
               )}
             >
               {step.label}
@@ -43,8 +41,8 @@ export function Stepper({ steps, currentStep }: StepperProps) {
           {index < steps.length - 1 && (
             <div
               className={cn(
-                "mx-4 sm:mx-6 h-[2px] w-8 sm:w-16 transition-all duration-300 rounded-full",
-                currentStep > step.id ? "bg-primary" : "bg-gray-200",
+                "mx-4 sm:mx-8 h-[1px] w-12 sm:w-20",
+                currentStep > step.id ? "bg-[#6366f1]" : "bg-gray-300",
               )}
             />
           )}
